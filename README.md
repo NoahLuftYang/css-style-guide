@@ -1,18 +1,18 @@
-# Airbnb CSS / Sass Styleguide
+# Airbnb CSS / Sass 스타일 가이드
 
-*A mostly reasonable approach to CSS and Sass*
+*CSS와 Sass에 대한 가장 합리적인 접근 방법*
 
-## Table of Contents
+## 목차
 
-  1. [Terminology](#terminology)
-    - [Rule Declaration](#rule-declaration)
-    - [Selectors](#selectors)
-    - [Properties](#properties)
+  1. [용어 설명](#용어 설명)
+    - [규칙 선언부(Rule declaration)](#규칙 선언부(Rule declaration))
+    - [선택자(Selectors)](#선택자(Selectors))
+    - [속성(properties)](#속성(properties))
   1. [CSS](#css)
     - [Formatting](#formatting)
     - [Comments](#comments)
     - [OOCSS and BEM](#oocss-and-bem)
-    - [ID Selectors](#id-selectors)
+    - [ID 선택자](#id-선택자)
     - [JavaScript hooks](#javascript-hooks)
     - [Border](#border)
   1. [Sass](#sass)
@@ -21,14 +21,14 @@
     - [Variables](#variables)
     - [Mixins](#mixins)
     - [Extend directive](#extend-directive)
-    - [Nested selectors](#nested-selectors)
+    - [Nested 선택자](#nested-선택자)
   1. [Translation](#translation)
 
-## Terminology
+## 용어 설명
 
-### Rule declaration
+### 규칙 선언부(Rule declaration)
 
-A “rule declaration” is the name given to a selector (or a group of selectors) with an accompanying group of properties. Here's an example:
+"규칙 선언부"는 특정 속성 그룹을 따르는 선택자(또는 선택자로 묶인 그룹)에게 부여되는 이름입니다. 다음 예시를 참조해주세요:
 
 ```css
 .listing {
@@ -37,9 +37,9 @@ A “rule declaration” is the name given to a selector (or a group of selector
 }
 ```
 
-### Selectors
+### 선택자(Selectors)
 
-In a rule declaration, “selectors” are the bits that determine which elements in the DOM tree will be styled by the defined properties. Selectors can match HTML elements, as well as an element's class, ID, or any of its attributes. Here are some examples of selectors:
+규칙 선언부에서, "선택자"는 DOM 트리의 어떤 요소들이 정의된 속성(Properties)으로 꾸며질지 결정하는 부분들입니다. 선택자는 HTML 요소들, 뿐만 아니라 한 요소의 클래스, ID, 또는 해당 요소의 어느 속성(attributes)들과도 연결될 수 있습니다. 다음은 선택자에 대한 예시들입니다:
 
 ```css
 .my-element-class {
@@ -51,9 +51,9 @@ In a rule declaration, “selectors” are the bits that determine which element
 }
 ```
 
-### Properties
+### 속성(Properties)
 
-Finally, properties are what give the selected elements of a rule declaration their style. Properties are key-value pairs, and a rule declaration can contain one or more property declarations. Property declarations look like this:
+마지막으로, 속성(Properties)은 규칙 선언부의 선택된 요소들이 그들의 스타일을 가지게 하는 것입니다. 속성은 키-값의 쌍으로 구성되며, 규칙 선언부는 하나 이상의 속성 선언부를 가질 수 있습니다. 속성 선언부는 아래와 같은 형태입니다:
 
 ```css
 /* some selector */ {
@@ -69,12 +69,12 @@ Finally, properties are what give the selected elements of a rule declaration th
 * Use soft tabs (2 spaces) for indentation
 * Prefer dashes over camelCasing in class names.
   - Underscores and PascalCasing are okay if you are using BEM (see [OOCSS and BEM](#oocss-and-bem) below).
-* Do not use ID selectors
-* When using multiple selectors in a rule declaration, give each selector its own line.
-* Put a space before the opening brace `{` in rule declarations
-* In properties, put a space after, but not before, the `:` character.
-* Put closing braces `}` of rule declarations on a new line
-* Put blank lines between rule declarations
+* Do not use ID 선택자
+* When using multiple 선택자 in a 규칙 선언부, give each selector its own line.
+* Put a space before the opening brace `{` in 규칙 선언부s
+* In 속성(properties), put a space after, but not before, the `:` character.
+* Put closing braces `}` of 규칙 선언부s on a new line
+* Put blank lines between 규칙 선언부s
 
 **Bad**
 
@@ -165,9 +165,9 @@ function ListingCard() {
   * `.ListingCard__title` is an “element” and represents a descendant of `.ListingCard` that helps compose the block as a whole.
   * `.ListingCard--featured` is a “modifier” and represents a different state or variation on the `.ListingCard` block.
 
-### ID selectors
+### ID 선택자
 
-While it is possible to select elements by ID in CSS, it should generally be considered an anti-pattern. ID selectors introduce an unnecessarily high level of [specificity](https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity) to your rule declarations, and they are not reusable.
+While it is possible to select elements by ID in CSS, it should generally be considered an anti-pattern. ID 선택자 introduce an unnecessarily high level of [specificity](https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity) to your 규칙 선언부s, and they are not reusable.
 
 For more on this subject, read [CSS Wizardry's article](http://csswizardry.com/2014/07/hacks-for-dealing-with-specificity/) on dealing with specificity.
 
@@ -235,9 +235,9 @@ Use `0` instead of `none` to specify that a style has no border.
     }
     ```
 
-3. Nested selectors
+3. Nested 선택자
 
-    Nested selectors, _if necessary_, go last, and nothing goes after them. Add whitespace between your rule declarations and nested selectors, as well as between adjacent nested selectors. Apply the same guidelines as above to your nested selectors.
+    Nested 선택자, _if necessary_, go last, and nothing goes after them. Add whitespace between your 규칙 선언부s and nested 선택자, as well as between adjacent nested 선택자. Apply the same guidelines as above to your nested 선택자.
 
     ```scss
     .btn {
@@ -261,11 +261,11 @@ Mixins should be used to DRY up your code, add clarity, or abstract complexity--
 
 ### Extend directive
 
-`@extend` should be avoided because it has unintuitive and potentially dangerous behavior, especially when used with nested selectors. Even extending top-level placeholder selectors can cause problems if the order of selectors ends up changing later (e.g. if they are in other files and the order the files are loaded shifts). Gzipping should handle most of the savings you would have gained by using `@extend`, and you can DRY up your stylesheets nicely with mixins.
+`@extend` should be avoided because it has unintuitive and potentially dangerous behavior, especially when used with nested 선택자. Even extending top-level placeholder 선택자 can cause problems if the order of 선택자 ends up changing later (e.g. if they are in other files and the order the files are loaded shifts). Gzipping should handle most of the savings you would have gained by using `@extend`, and you can DRY up your stylesheets nicely with mixins.
 
-### Nested selectors
+### Nested 선택자
 
-**Do not nest selectors more than three levels deep!**
+**Do not nest 선택자 more than three levels deep!**
 
 ```scss
 .page-container {
@@ -277,14 +277,14 @@ Mixins should be used to DRY up your code, add clarity, or abstract complexity--
 }
 ```
 
-When selectors become this long, you're likely writing CSS that is:
+When 선택자 become this long, you're likely writing CSS that is:
 
 * Strongly coupled to the HTML (fragile) *—OR—*
 * Overly specific (powerful) *—OR—*
 * Not reusable
 
 
-Again: **never nest ID selectors!**
+Again: **never nest ID 선택자!**
 
 If you must use an ID selector in the first place (and you should really try not to), they should never be nested. If you find yourself doing this, you need to revisit your markup, or figure out why such strong specificity is needed. If you are writing well formed HTML and CSS, you should **never** need to do this.
 
